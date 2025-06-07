@@ -24,7 +24,7 @@ body {
     line-height: 1.6;
     color: var(--text-light);
     background-color: var(--primary-dark);
-    overflow-x: hidden; /* Prevent horizontal scroll from star effect */
+    overflow-x: hidden; /* Prevent horizontal scroll from any overflow */
 }
 
 .container {
@@ -41,118 +41,26 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    overflow: hidden; /* Crucial for star effect */
+    overflow: hidden; /* Crucial for stars and mouse effect */
 }
 
+/* Star background with subtle parallax using 'fixed' */
 .star-bg {
-    position: absolute;
+    position: fixed; /* Changed to fixed for base parallax */
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh; /* Match hero height */
     background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat, /* A subtle stardust pattern */
                 radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); /* Deep space gradient */
     background-size: cover;
-    z-index: 0;
-    animation: panBackground 60s linear infinite; /* Optional: subtle panning */
+    z-index: -1; /* Ensure it's behind the content */
+    will-change: transform; /* Hint to browser for performance */
+    transition: transform 0.1s linear; /* Smooth transition for mouse parallax */
 }
 
-/* Starry Night Effect (CSS-generated stars for simplicity) */
-/* You could also use a large background image of stars */
-.star-bg::before,
-.star-bg::after {
-    content: '';
-    position: absolute;
-    background-color: var(--text-light); /* White/light stars */
-    border-radius: 50%;
-    opacity: 0;
-    animation: twinkle 5s infinite ease-in-out alternate;
-}
-
-.star-bg::before {
-    width: 2px;
-    height: 2px;
-    box-shadow: 200px 150px 0 0px var(--text-light),
-                400px 300px 0 0px var(--text-light),
-                600px 50px 0 0px var(--text-light),
-                800px 450px 0 0px var(--text-light),
-                1000px 200px 0 0px var(--text-light),
-                1200px 500px 0 0px var(--text-light),
-                100px 600px 0 0px var(--text-light),
-                300px 700px 0 0px var(--text-light),
-                500px 800px 0 0px var(--text-light),
-                700px 900px 0 0px var(--text-light),
-                900px 100px 0 0px var(--text-light),
-                1100px 350px 0 0px var(--text-light);
-    /* More stars for variety */
-    width: 1px; height: 1px;
-    box-shadow: 50px 50px 0 0px var(--text-light),
-                150px 250px 0 0px var(--text-light),
-                250px 450px 0 0px var(--text-light),
-                350px 650px 0 0px var(--text-light),
-                450px 850px 0 0px var(--text-light),
-                550px 50px 0 0px var(--text-light),
-                650px 250px 0 0px var(--text-light),
-                750px 450px 0 0px var(--text-light),
-                850px 650px 0 0px var(--text-light),
-                950px 850px 0 0px var(--text-light),
-                1050px 150px 0 0px var(--text-light),
-                1150px 350px 0 0px var(--text-light),
-                1250px 550px 0 0px var(--text-light),
-                1350px 750px 0 0px var(--text-light),
-                1450px 950px 0 0px var(--text-light),
-                150px 950px 0 0px var(--text-light),
-                1050px 50px 0 0px var(--text-light),
-                300px 50px 0 0px var(--text-light),
-                900px 700px 0 0px var(--text-light),
-                1100px 800px 0 0px var(--text-light),
-                100px 100px 0 0px var(--text-light),
-                400px 200px 0 0px var(--text-light),
-                700px 100px 0 0px var(--text-light),
-                1000px 600px 0 0px var(--text-light),
-                200px 500px 0 0px var(--text-light),
-                500px 300px 0 0px var(--text-light),
-                800px 900px 0 0px var(--text-light),
-                1100px 250px 0 0px var(--text-light),
-                1400px 750px 0 0px var(--text-light),
-                150px 100px 0 0px var(--text-light),
-                300px 200px 0 0px var(--text-light),
-                500px 400px 0 0px var(--text-light),
-                700px 600px 0 0px var(--text-light),
-                900px 800px 0 0px var(--text-light),
-                1100px 1000px 0 0px var(--text-light),
-                1300px 200px 0 0px var(--text-light),
-                1500px 400px 0 0px var(--text-light),
-                100px 700px 0 0px var(--text-light),
-                400px 900px 0 0px var(--text-light),
-                600px 100px 0 0px var(--text-light),
-                800px 300px 0 0px var(--text-light),
-                1000px 500px 0 0px var(--text-light),
-                1200px 700px 0 0px var(--text-light);
-}
-
-.star-bg::after {
-    width: 1px;
-    height: 1px;
-    box-shadow: 100px 50px 0 0px var(--text-light),
-                300px 200px 0 0px var(--text-light),
-                500px 400px 0 0px var(--text-light),
-                700px 600px 0 0px var(--text-light),
-                900px 800px 0 0px var(--text-light),
-                1100px 100px 0 0px var(--text-light);
-    animation-delay: 2.5s; /* Stagger twinkle effect */
-}
-
-@keyframes twinkle {
-    0%, 100% { opacity: 0; }
-    50% { opacity: 1; }
-}
-
-@keyframes panBackground {
-    0% { background-position: 0% 0%; }
-    100% { background-position: 100% 100%; }
-}
-
+/* .star class is added dynamically by JavaScript */
+/* The @keyframes twinkle is also added dynamically by JavaScript */
 
 .hero-content {
     position: relative; /* Above stars */
@@ -257,6 +165,7 @@ p {
     gap: 30px;
     margin-top: 50px;
     margin-bottom: 50px;
+    perspective: 1000px; /* Crucial for 3D transforms on child elements */
 }
 
 .portfolio-item {
@@ -265,11 +174,12 @@ p {
     border-radius: 8px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-style: preserve-3d; /* Allows child elements to have 3D perspective */
 }
 
 .portfolio-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(0, 215, 255, 0.2);
+    transform: translateZ(20px) translateY(-5px) rotateX(2deg) rotateY(2deg); /* Slight forward, upward, and rotation */
+    box-shadow: 0 10px 25px rgba(0, 215, 255, 0.4); /* More prominent glow on hover */
 }
 
 .portfolio-item img {
@@ -314,119 +224,3 @@ p {
 .contact-form input[type="email"],
 .contact-form textarea {
     padding: 15px;
-    border: 1px solid rgba(0, 215, 255, 0.3);
-    border-radius: 5px;
-    background-color: rgba(26, 26, 58, 0.5); /* Slightly transparent */
-    color: var(--text-light);
-    font-size: 1.1em;
-    font-family: var(--font-body);
-    transition: border-color 0.3s ease;
-}
-
-.contact-form input[type="text"]:focus,
-.contact-form input[type="email"]:focus,
-.contact-form textarea:focus {
-    outline: none;
-    border-color: var(--accent-color);
-    box-shadow: 0 0 8px rgba(0, 215, 255, 0.5);
-}
-
-.contact-form textarea {
-    resize: vertical;
-}
-
-.contact-info {
-    margin-top: 30px;
-}
-
-.contact-info p {
-    margin-bottom: 10px;
-    font-size: 1.1em;
-}
-
-.contact-info a {
-    color: var(--accent-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.contact-info a:hover {
-    color: #00AACC;
-    text-decoration: underline;
-}
-
-.social-links {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.social-links img {
-    filter: drop-shadow(0 0 5px rgba(0, 215, 255, 0.3)); /* Subtle glow */
-    transition: transform 0.2s ease;
-}
-
-.social-links img:hover {
-    transform: translateY(-5px);
-}
-
-/* --- Footer --- */
-footer {
-    background-color: var(--primary-dark);
-    color: var(--text-muted);
-    text-align: center;
-    padding: 20px;
-    font-size: 0.9em;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* --- Responsive Design --- */
-@media (max-width: 768px) {
-    .hero-content h1 {
-        font-size: 3em;
-    }
-
-    .hero-content p {
-        font-size: 1.2em;
-    }
-
-    h2 {
-        font-size: 2.5em;
-    }
-
-    .section {
-        padding: 60px 0;
-    }
-
-    .grid-container {
-        grid-template-columns: 1fr;
-    }
-
-    .portfolio-item {
-        margin: 0 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-content h1 {
-        font-size: 2.5em;
-    }
-
-    .hero-content p {
-        font-size: 1em;
-    }
-
-    h2 {
-        font-size: 2em;
-    }
-
-    .btn {
-        padding: 12px 25px;
-        font-size: 1em;
-    }
-
-    .contact-form {
-        margin: 0 20px 40px 20px;
-    }
-}
