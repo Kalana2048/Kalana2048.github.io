@@ -224,3 +224,119 @@ p {
 .contact-form input[type="email"],
 .contact-form textarea {
     padding: 15px;
+    border: 1px solid rgba(0, 215, 255, 0.3);
+    border-radius: 5px;
+    background-color: rgba(26, 26, 58, 0.5); /* Slightly transparent */
+    color: var(--text-light);
+    font-size: 1.1em;
+    font-family: var(--font-body);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 8px rgba(0, 215, 255, 0.5);
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-info {
+    margin-top: 30px;
+}
+
+.contact-info p {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.contact-info a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: #00AACC;
+    text-decoration: underline;
+}
+
+.social-links {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-links img {
+    filter: drop-shadow(0 0 5px rgba(0, 215, 255, 0.3)); /* Subtle glow */
+    transition: transform 0.2s ease;
+}
+
+.social-links img:hover {
+    transform: translateY(-5px);
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--primary-dark);
+    color: var(--text-muted);
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .hero-content h1 {
+        font-size: 3em;
+    }
+
+    .hero-content p {
+        font-size: 1.2em;
+    }
+
+    h2 {
+        font-size: 2.5em;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-item {
+        margin: 0 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+
+    .contact-form {
+        margin: 0 20px 40px 20px;
+    }
+}
